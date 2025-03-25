@@ -1,26 +1,38 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
+type EnvVar = {
+  key: string;
+  value: string | undefined;
+};
+
+const App: React.FC = () => {
+  const envVars: EnvVar[] = [
+    { key: 'REACT_APP_API_URL', value: process.env.REACT_APP_API_URL },
+    { key: 'REACT_APP_REGION', value: process.env.REACT_APP_REGION },
+    { key: 'REACT_APP_STAGE', value: process.env.REACT_APP_STAGE },
+  ];
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={{ padding: '2rem', fontFamily: 'sans-serif' }}>
+      <h1>AWS Amplify Environment Variables</h1>
+      <table border={1} cellPadding={10}>
+        <thead>
+          <tr>
+            <th>Variable</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          {envVars.map((env) => (
+            <tr key={env.key}>
+              <td>{env.key}</td>
+              <td>{env.value || 'Not Defined'}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
-}
+};
 
 export default App;
