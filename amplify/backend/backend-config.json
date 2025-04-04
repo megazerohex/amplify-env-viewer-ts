@@ -1,0 +1,27 @@
+{
+  "function": {
+    "getSecret": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_getSecret_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "getSecret"
+        }
+      ]
+    },
+    "AMPLIFY_function_getSecret_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "getSecret"
+        }
+      ]
+    }
+  }
+}
